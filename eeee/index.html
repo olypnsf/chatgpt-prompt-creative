@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creative Prompt Finder For You Save 100% Productivity</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .prompt {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .prompt:hover {
+            background-color: #ebebeb;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Save 50% productivity of hard works</h1>
+        <input type="text" id="searchInput" placeholder="Enter a prompt to search">
+        <div id="results"></div>
+        <footer>
+            <p>&copy; This only beta websites. If you had prompt to be submitted let us know contact at mindmetis@gmail.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript code
+        // Sample prompt data
+        const prompts = [
+            "How to make youtube video scripts?",
+            "Create amazing web with ChatGPT 3",
+        ];
+
+        // Function to filter and display prompts
+        function filterPrompts() {
+            const searchInput = document.getElementById("searchInput");
+            const query = searchInput.value.toLowerCase();
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            if (query) {
+                const filteredPrompts = prompts.filter(prompt => prompt.toLowerCase().includes(query));
+                filteredPrompts.forEach(prompt => {
+                    const promptDiv = document.createElement("div");
+                    promptDiv.classList.add("prompt");
+                    promptDiv.textContent = prompt;
+                    promptDiv.addEventListener("click", () => {
+                        // Handle click event
+                        window.location.href = "prompt-details.html?prompt=" + encodeURIComponent(prompt);
+                    });
+                    resultsDiv.appendChild(promptDiv);
+                });
+            }
+        }
+
+        // Event listener for search input
+        document.getElementById("searchInput").addEventListener("input", filterPrompts);
+    </script>
+</body>
+</html>
